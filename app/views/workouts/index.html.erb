@@ -9,11 +9,10 @@
       <div class="card">
         <img src="https://picsum.photos/200" class="card-img-top">
         <div class="card-body">
-          <h4 class="card-title"><%= workout['name'] %></h4>
+          <h4 class="card-title"><%= link_to workout['name'], workout_path(workout['id']) %></h4>
           <p class="card-text"><%= workout['details'] %></p>
           <p class="card-text"><%= workout['difficulty_level'] %></p>
 
-          <%= link_to "See Workout Details", workout_path(workout['id']), class: "btn btn-primary" %>
         </div>
       </div>
     </div>

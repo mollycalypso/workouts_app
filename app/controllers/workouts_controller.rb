@@ -1,18 +1,16 @@
 class WorkoutsController < ApplicationController
     before_action :set_workout, only: %i[show edit update destroy]
   
-    # GET /drinks
+    # GET /WO
     def index
       @workouts = Workout.all
     end
   
     # GET /workout/1
     def show
-      @workout = @workouts.select { |workout| workout["id"] == params[:id].to_i }.first 
-      # params[:something] is always a string! Here we need to turn it into an integer
     end
   
-    # GET /drinks/new
+    # GET /wo/new
     def new
       @workout = Workout.new
     end
@@ -23,29 +21,22 @@ class WorkoutsController < ApplicationController
   
     # POST /drink
     def create
-      @workout = Workout.new(workout_params)
+      @workout = Workout.create(workout_params)
   
-      if @workout.save
-        redirect_to @workout, notice: 'Workout was successfully created.'
-      else
-        render :new
-      end
+      redirect_to root_path
     end
   
-    # PATCH/PUT /drinks/1
+    # PATCH/PUT /wo/1
     def update
-      if @workout.update(workout_params)
-        redirect_to @workout, notice: 'Workout was successfully updated.'
-  
-      else
-        render :edit
-      end
+      @workout.update(workout_params)
+
+      redirect_to root_path
     end
   
     # DELETE /drinks/1
     def destroy
-      @workout.destroy
-      redirect_to workout_url, notice: 'Workout was successfully deleted.'
+      @workout.delete
+      redirect_to workouts_url, notice: 'Workout was successfully deleted.'
     end
   
   
@@ -58,6 +49,6 @@ class WorkoutsController < ApplicationController
   
     # Only allow a trusted parameter "white list" through.
     def workout_params
-      params.require(:workout).permit(:name, :creator, :difficulty_level, :exercises, :details, :equipment)
+      params.require(:workout).permit(:name, :creator, :difficulty_level, :exercises, :details, :equipment, :avatar)
     end
   end

@@ -12,7 +12,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @workout.description %>
+  <%= @workout.details %>
 </p>
 
 <%= link_to 'Edit', edit_workout_path(@workout), class: "btn btn-success" %> |
@@ -21,3 +21,38 @@
 <hr>
 
 <h3>Reviews to be created:</h3>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8 mt-2">
+      <h2><%= @workout.name %></h2>
+      <p><%= @workout.details %></p>
+      <p><%= @workout.difficulty_level %></p>
+      <p><%= @workout.equipment %></p>
+
+      <h3>Amount:</h3>
+      <% if @workout.amounts.empty? %>
+        <p>There are no amounts yet here.</p>
+      <% else %>
+        <h6>Amounts:</h6>
+        <ul class="list-group">
+          <% @workout.amounts.each do |exercise| %>
+            <li class="list-group-item">
+              <%= amount.content %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <h3>Products:</h3>
+      <ul class="list-group">
+        <% @workout.exercises.each do |exercise| %>
+          <li class="list-group-item"><%= exercise.name %></li>
+        <% end %>
+      </ul>
+
+      <%= link_to "Back to the homepage", root_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,31 @@
+<h1><%= @workout.name %></h1>
+<% @workout.exercises.each do |exercise| %>
+  <%= exercise.name %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<h1><%= link_to "Exercises Builder"%></h1>
+
+<div class="container">
+  <div class="row">
+    <% @exercises.each do |exercise| %>
+    <div class="col-4 my-4">
+      <div class="card">
+        <img src="https://picsum.photos/200" class="card-img-top">
+        <div class="card-body">
+          <h4 class="card-title"><%= exercise['name'] %></h4>
+          <p class="card-text"><%= exercise['description'] %></p>
+
+          <%= link_to "See Exercise", exercise_path(exercise['id']), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+<br>
+
+<%= link_to 'New Exercise', new_exercise_path, class: "btn btn-dark" %>
