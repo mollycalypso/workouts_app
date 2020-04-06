@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= link_to "Workouts", root_path%></h1>
+
+<div class="container">
+  <div class="row">
+    <% @workouts.each do |workout| %>
+    <div class="col-4 my-4">
+      <div class="card">
+        <img src="https://picsum.photos/200" class="card-img-top">
+        <div class="card-body">
+          <h4 class="card-title"><%= workout['name'] %></h4>
+          <p class="card-text"><%= workout['details'] %></p>
+          <p class="card-text"><%= workout['difficulty_level'] %></p>
+
+          <%= link_to "See Workout Details", workout_path(workout['id']), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+<br>
+
+<%= link_to 'New Workout', new_workout_path, class: "btn btn-dark" %>

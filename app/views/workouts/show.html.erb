@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @workout.name %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @workout.creator %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @workout.description %>
+</p>
+
+<%= link_to 'Edit', edit_workout_path(@workout), class: "btn btn-success" %> |
+<%= link_to 'Back', workout_path %>
+
+<hr>
+
+<h3>Reviews to be created:</h3>

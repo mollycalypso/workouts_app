@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  creator: MyString
+  difficulty_level: MyString
+  exercises: 1
+  details: MyString
+  equipment: MyString
+  avatar: MyString
+
+two:
+  name: MyString
+  creator: MyString
+  difficulty_level: MyString
+  exercises: 1
+  details: MyString
+  equipment: MyString
+  avatar: MyString
