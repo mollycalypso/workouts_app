@@ -15,15 +15,21 @@ class WorkoutsController < ApplicationController
       @workout = Workout.new
     end
   
-    # GET /drink/1/edit
+    # GET 1/edit
     def edit
     end
   
-    # POST /drink
+    # POST /
     def create
       @workout = Workout.create(workout_params)
   
       redirect_to root_path
+      # @workout = Workout.new(workout_params)
+      # if @workout.save
+      #   redirect_to workout_path(@workout)
+      # else
+      #   render 'new'
+      # end
     end
   
     # PATCH/PUT /wo/1
@@ -36,7 +42,7 @@ class WorkoutsController < ApplicationController
     # DELETE /drinks/1
     def destroy
       @workout.delete
-      redirect_to workouts_url, notice: 'Workout was successfully deleted.'
+      redirect_to root_path, notice: 'Workout was successfully deleted.'
     end
   
   
@@ -49,6 +55,6 @@ class WorkoutsController < ApplicationController
   
     # Only allow a trusted parameter "white list" through.
     def workout_params
-      params.require(:workout).permit(:name, :creator, :difficulty_level, :exercises, :details, :equipment, :avatar)
+      params.require(:workout).permit(:name, :creator, :difficulty_level, :exercises, :details, :equipment)
     end
   end
