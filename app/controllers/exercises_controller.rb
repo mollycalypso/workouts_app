@@ -1,4 +1,4 @@
-class ExerciseController < ApplicationController
+class ExercisesController < ApplicationController
   before_action :set_exercise, only: %i[show edit update destroy]
 
     def index

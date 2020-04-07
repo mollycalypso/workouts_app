@@ -21,15 +21,10 @@ class WorkoutsController < ApplicationController
   
     # POST /
     def create
-      @workout = Workout.create(workout_params)
+      @workout = Workout.new(workout_params)
+      @workout.save
   
       redirect_to root_path
-      # @workout = Workout.new(workout_params)
-      # if @workout.save
-      #   redirect_to workout_path(@workout)
-      # else
-      #   render 'new'
-      # end
     end
   
     # PATCH/PUT /wo/1
@@ -55,6 +50,6 @@ class WorkoutsController < ApplicationController
   
     # Only allow a trusted parameter "white list" through.
     def workout_params
-      params.require(:workout).permit(:name, :creator, :difficulty_level, :exercises, :details, :equipment)
+      params.require(:workout).permit(:name, :creator, :difficulty_level, :details, :equipment)
     end
   end
