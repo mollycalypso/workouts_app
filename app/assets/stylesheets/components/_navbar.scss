@@ -1,7 +1,8 @@
 .navbar-lewagon {
-  justify-content: space-between;
-  background-color: #F6F5D9;
+  justify-content: space-evenly;
+  background-color: white;
   transition: 0.5s background-color ease;
+  text-align: center;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -13,5 +14,6 @@
 }
 
 .navbar-lewagon-white {
-  background-color: #F6F5D9;
+  background-color: white;
 }
+

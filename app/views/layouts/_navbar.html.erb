@@ -12,19 +12,28 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to "Home", root_path, class: "nav-link" %>
+      <li class="nav-item" id="nav-giphy">
+        <iframe src="https://giphy.com/embed/10l2FXjFq1rXKU" height="72" frameBorder="0" 
+          allowFullScreen></iframe>
+        <p><a href="https://giphy.com/gifs/black-and-white-game-jump-10l2FXjFq1rXKU"></a></p>
       </li>
+      <li class="nav-item">
+        <%= link_to "All Workouts (Cocktails)", root_path, class: "nav-link" %>
+      </li>
+
       <%# <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form> %>
       <li class="nav-item">
-        <%= link_to "New Workout (Cocktail)", new_workout_path, class: "nav-link" %>
+        <%= link_to "New Workout", new_workout_path, class: "nav-link" %>
       </li>
 
       <li class="nav-item">
-        <%= link_to "New Exercise (Ingredient)", new_exercise_path, class: "nav-link" %>
+        <%= link_to "All Exercises (Ingredients)", exercises_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "New Exercise", new_exercise_path, class: "nav-link" %>
       </li>
       <li class="nav-item dropdown">
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/mollycalypso", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

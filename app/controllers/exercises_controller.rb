@@ -4,10 +4,8 @@ class ExercisesController < ApplicationController
     def index
       @exercises = Exercise.all
     end
-  
-    
-      # GET /workout/1
-      def show
+
+    def show
       end
     
 
@@ -22,7 +20,7 @@ class ExercisesController < ApplicationController
   
       def create
         @exercise = Exercise.create(exercise_params)
-    
+        @exercise.save
         redirect_to exercises_path(@exercise)
       end
     
@@ -43,7 +41,7 @@ class ExercisesController < ApplicationController
     
       # Only allow a trusted parameter "white list" through.
       def exercise_params
-        params.require(:exercise).permit(:name, :description, :equipment, :body_part)
+        params.require(:exercise).permit(:name, :description, :equipment, :body_part, :video_url)
       end
     end
   
