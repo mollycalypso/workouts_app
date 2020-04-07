@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2020_04_07_145331) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "amounts", force: :cascade do |t|
     t.text "content"
-    t.integer "workout_id", null: false
-    t.integer "exercise_id", null: false
+    t.bigint "workout_id", null: false
+    t.bigint "exercise_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "sets"

@@ -54,7 +54,6 @@
   <h4 class="mt-4 mb-2">Add an Exercise to Workout:</h4>
   <%= simple_form_for [@workout, @amount] do |f| %>
   <%= f.association :exercise, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
-  <%= f.input :reps  %>
   <%= f.input(:content, components: [:input], :wrapper => false, label: "Details") %>
   <br>
   <%= f.button :submit, "Add Exercise to Workout", class: "btn-outline-secondary"%>
