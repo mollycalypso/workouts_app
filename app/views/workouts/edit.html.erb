@@ -1,9 +1,26 @@
-
 <div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-8">
-      <%= render "form", workout: @workout  %>
-    </div>
+      <%= simple_form_for Workout.find(params[:id]) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="container">
+        <div class="form-inputs">
+          <%= f.input :name %>
+          <%= f.input :details %>
+          <%= f.input :difficulty_level %>
+          <%= f.input :exercises %>
+          <%= f.input :details %>
+          <%= f.input :equipment %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit %>
+        </div>
+      </div>
+
+
+      <% end %> </div>
   </div>
 </div>
 

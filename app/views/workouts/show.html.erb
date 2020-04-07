@@ -1,82 +1,68 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container mt-4">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-10 col-lg-8">
-      <h2><%= @workout.name %></h2>
-      <%= link_to 'Edit', edit_workout_path(@workout.id) %> |
-      <%= link_to 'Delete', workouts_path(@workout.destroy) %> |
+  <h4 class="mt-4 mb-2"><%= @workout.name %></h4>
 
-      <p>Details:<%= @workout.details %></p>
-      <p>Difficulty Level:<%= @workout.difficulty_level %></p>
-      <p>Equipment Needed:<%= @workout.equipment %></p>
-      <p>Equipment Needed:<%= @workout.equipment %></p>
-
-      <hr>
+  <%= link_to 'Edit', edit_workout_path(@workout.id) %> |
+  <%= link_to 'Delete', destroy_workouts_path(@workout), method: :delete, data: { confirm: "Are you sure?" } %>
 
 
-      <h4 class="mt-4 mb-2">Exercises to do:</h4>
-      <% if @workout.exercises.empty? %>
-      <p>There are no exercises in this workout</p>
-      <%= link_to 'Add Exercise', exercises_path %>
-      <% else %>
-      <ul class="list-group">
-        <% @workout.exercises.each do |exercise| %>
-        <li class="list-group-item list-group-item-primary"><%= exercise.name %></li>
-        <% end %>
-      </ul>
+  <p>Details:<%= @workout.details %></p>
+  <p>Difficulty Level:<%= @workout.difficulty_level %></p>
+  <p>Equipment Needed:<%= @workout.equipment %></p>
+
+  </ul>
+</div>
+</div>
+</div>
+
+<hr>
+
+<div class="container mt-4">
+  <h4 class="mt-4 mb-2">Exercises to do:</h4>
+  <% if @workout.exercises.empty? %>
+  <p>There are no exercises in this workout, add some below</p>
+  <% else %>
+  <table class="table table-bordered">
+    <tbody>
+      <thead>
+        <th>Exercise</th>
+        <th>Reps</th>
+        <th>Details</th>
+        <th>Action</th>
+      </thead>
+      <% @workout.amounts.each do |amount| %>
+      <tr>
+        <td><%= amount.exercise.name %></td>
+        <td><%= amount.reps %></td>
+        <td><%= amount.content %></td>
+        <td>
+          <%= link_to workout_amount_path(amount), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <% end %>
+        </td>
+      </tr>
       <% end %>
+    </tbody>
+  </table>
 
-      <hr>
 
-      <div class="row">
-        <div class="col-sm-12 col-md-6">
-          <h3>Exercise</h3>
-          <table class="table table-bordered">
-            <tbody>
-              <thead>
-                <th>Exercise</th>
-                <th>Description</th>
-                <th>Action</th>
-              </thead>
-              <% @workout.amounts.each do |amount| %>
-              <tr>
-                <td><%= amount.exercise.name %></td>
-                <td><%= amount.content %></td>
-                <td>
-                  <%= link_to amount_path(amount), method: :delete, data: { confirm: "Are you sure?" } do %>
-                  <i class="fa fa-trash destroy_amount"></i>
-                  <% end %>
-                </td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-       <div class="col-sm-12 col-md-6">
-      <%# <%= render "amounts/new", workout: @workout, amount: @amount %> %>
-    </div>
-  </div>
+  <% end %>
+</div>
 
-      <h4 class="mt-4 mb-2">Action</h4>
-      <ul class="list-group">
-        <li>TEST</li>
-        <% @workout.amounts.each do |amount| %>
-        <li class="list-group-item list-group-item-primary"><%= amount.exercise.name %></li>
-        <li class="list-group-item list-group-item-primary"><%= amount.content %></li>
-        <% end %>
 
-      </ul>
-    </div>
-  </div>
+<hr>
+<div class="container mt-4">
+  <h4 class="mt-4 mb-2">Add an Exercise to Workout:</h4>
+  <%= simple_form_for [@workout, @amount] do |f| %>
+  <%= f.association :exercise, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+  <%= f.input :reps  %>
+  <%= f.input(:content, components: [:input], :wrapper => false, label: "Details") %>
+<br>
+  <%= f.button :submit, "Add Exercise to Workout", class: "btn-outline-secondary"%>
+  <% end %>
+  <hr>
 </div>
 
 
 
-
-
-
-
-<hr>
-
-<h3>Reviews to be created:</h3>
+<%# <h3>Reviews to be created:</h3> %>

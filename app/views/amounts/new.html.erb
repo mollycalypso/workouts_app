@@ -1,6 +1,6 @@
 <h3>Add a new dose</h3>
-<%= simple_form_for [workout, amount] do |f| %>
+<%= simple_form_for [@workout, @amount] do |f| %>
   <%= f.association :exercise, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
-  <%= f.input :description %>
+  <%= f.input :content %>
   <%= f.button :submit%>
 <% end %>

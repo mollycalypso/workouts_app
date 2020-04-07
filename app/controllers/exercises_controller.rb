@@ -6,6 +6,8 @@ class ExercisesController < ApplicationController
     end
 
     def show
+      # @workout = Workout.find(params[:id])
+      # @amount = Amount.new
       end
     
 
@@ -13,23 +15,24 @@ class ExercisesController < ApplicationController
         @exercise = Exercise.new
       end
     
-    
-      def edit
-      end
-    
-  
       def create
         @exercise = Exercise.create(exercise_params)
         @exercise.save
         redirect_to exercises_path(@exercise)
       end
-    
-    
-      # DELETE /drinks/1
+
+      def update
+      @exercise = Exercise.find(params[:id])
+      @exercise.update(exercise_params)
+      redirect_to exercises_path(@exercise)
+    end
+
+      # DELETE //1
       def destroy
-        @exercise.delete
-        redirect_to workouts_url, notice: 'Exercise was successfully deleted.'
+        @exercise.destroy
+        redirect_to exercises_path, notice: 'Exercise was successfully deleted.'
       end
+    
     
     
       private
