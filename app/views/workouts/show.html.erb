@@ -1,58 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @workout.name %>
-</p>
-
-<p>
-  <strong>Creator:</strong>
-  <%= @workout.creator %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @workout.details %>
-</p>
-
-<%= link_to 'Edit', edit_workout_path(@workout), class: "btn btn-success" %> |
-<%= link_to 'Back', workout_path %>
-
-<hr>
-
-<h3>Reviews to be created:</h3>
-
-<div class="container">
+<div class="container mt-4">
   <div class="row justify-content-center">
-    <div class="col-8 mt-2">
+    <div class="col-12 col-md-10 col-lg-8">
       <h2><%= @workout.name %></h2>
       <p><%= @workout.details %></p>
       <p><%= @workout.difficulty_level %></p>
       <p><%= @workout.equipment %></p>
 
-      <h3>Amount:</h3>
-      <% if @workout.amounts.empty? %>
-        <p>There are no amounts yet here.</p>
-      <% else %>
-        <h6>Amounts:</h6>
-        <ul class="list-group">
-          <% @workout.amounts.each do |exercise| %>
-            <li class="list-group-item">
-              <%= amount.content %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
+      <hr>
 
-      <h3>Products:</h3>
+      <h4 class="mt-4 mb-2">Exercises to do:</h4>
+      <% if @workout.exercises.empty? %>
+      <p>There are no exercises in this workout</p>
+      <% else %>
       <ul class="list-group">
         <% @workout.exercises.each do |exercise| %>
-          <li class="list-group-item"><%= exercise.name %></li>
+        <li class="list-group-item list-group-item-primary"><%= exercise.name %></li>
         <% end %>
       </ul>
+      <% end %>
 
-      <%= link_to "Back to the homepage", root_path, class: "btn btn-primary" %>
+      <hr>
+      <h4 class="mt-4 mb-2">Action</h4>
+      <ul class="list-group">
+      <li>TEST</li>
+        <% @workout.amounts.each do |amount| %>
+        <li class="list-group-item list-group-item-primary"><%= amount.exercise.name %></li>
+        <li class="list-group-item list-group-item-primary"><%= amount.content %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
 
+
+
+<%= link_to 'Edit', edit_workout_path(@workout), class: "btn btn-success" %> |
+<%= link_to 'Back', workouts_path %>
+
+<hr>
+
+<h3>Reviews to be created:</h3>

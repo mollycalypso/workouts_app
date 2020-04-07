@@ -1,6 +1,12 @@
-<h1>Editing Workout</h1>
 
-<%= render 'form', workout: @workout %>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <%= render "form", workout: @workout  %>
+    </div>
+  </div>
+</div>
+
 
 <%= link_to 'Show', @workout %> |
 <%= link_to 'Back', workouts_path %>

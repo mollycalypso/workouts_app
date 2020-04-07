@@ -1,4 +1,5 @@
 class Workout < ApplicationRecord
-  has_many :exercises, dependent: :destroy
-  has_many :amounts, through: :amounts
+  has_many :amounts
+  has_many :exercises, through: :amounts
+
 end

@@ -14,10 +14,13 @@
 </head>
 
 <body>
-    <nav class="navbar-lewagon">
-    <%= link_to "Workouts", root_path, class: "navbar-brand" %>
-    </nav>
+  <%= render "layouts/navbar" %>
+  <div class="home-section"></div>
+
   <%= yield %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag "application" %>
+
 </body>
 
 </html>

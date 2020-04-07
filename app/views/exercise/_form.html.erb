@@ -1,13 +1,13 @@
 
-  <%= simple_form_for(@workout) do |f| %>
+  <%= simple_form_for(@exercise) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :details %>
-    <%= f.input :difficulty_level %>
-     <%= f.input :exercises %>
+    <%= f.input :body_part %>
+    <%= f.input :description %>
+    <%= f.input :equipment %>
   </div>
 
   <div class="form-actions">

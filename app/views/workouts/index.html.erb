@@ -1,12 +1,13 @@
+<%= render "banner" %>
+
 <p id="notice"><%= notice %></p>
 
-<h1><%= link_to "Workouts", root_path%></h1>
 
 <div class="container">
   <div class="row">
     <% @workouts.each do |workout| %>
-    <div class="col-4 my-4">
-      <div class="card">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card my-4">
         <img src="https://picsum.photos/200" class="card-img-top">
         <div class="card-body">
           <h4 class="card-title"><%= link_to workout['name'], workout_path(workout['id']) %></h4>
@@ -23,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Workout', new_workout_path, class: "btn btn-dark" %>
+    <%# <img src= "/app/assets/images/man-working-out-2294361.jpg" alt="man working out"> %>
