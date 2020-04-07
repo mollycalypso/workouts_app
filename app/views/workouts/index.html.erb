@@ -11,7 +11,7 @@
         <div class="card-body">
           <h4 class="card-title"><%= link_to workout['name'], workout_path(workout) %></h4>
           <p class="card-text">Difficulty Level: <%= workout['difficulty_level'] %></p>
-          <p class="card-text">Number of Exercises: <%= workout['exercises'] %></p>
+          <p class="card-text">Equipment: <%= workout['equipment'] %></p>
           <p class="card-text">Details: <%= workout['details'] %></p>
           <div class="row">
             <%= image_tag "https://picsum.photos/200", class: "avatar" %>
