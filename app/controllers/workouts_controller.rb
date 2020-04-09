@@ -3,6 +3,8 @@ class WorkoutsController < ApplicationController
   
     # GET /WO
     def index
+      @workouts = policy_scope(Workout).order(created_at: :desc)
+
       @workouts = Workout.all
     end
   
